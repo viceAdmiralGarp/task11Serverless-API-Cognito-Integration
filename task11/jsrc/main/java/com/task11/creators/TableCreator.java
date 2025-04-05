@@ -16,5 +16,6 @@ public class TableCreator implements RouteHandler {
         Map<String, Object> body = context.getBody();
         context.getLambdaContext().getLogger().log("Taken off to feed on the folded tableTaken off to feed on the folded table: " + body);
         return tableService.createTable(body);
+
     }
 }
