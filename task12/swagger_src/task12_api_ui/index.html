@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="api-reference" content="API documentation">
+    <style>
+        body {
+            margin: 0;
+            background-color: #fafafa;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css" />
+</head>
+<body>
+    <main id="api-docs">
+        <div id="docs-container"></div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uiConfig = {
+                specUrl: 'api_specification.json',
+                targetElement: '#docs-container',
+                configuration: {
+                    layout: "StandaloneLayout",
+                    displayOptions: {
+                        deepLinking: true
+                    }
+                },
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl,
+                    SwaggerUIStandalonePreset
+                ],
+                supportedSubmitMethods: ['get', 'post', 'put', 'delete']
+            };
+
+            const apiUI = SwaggerUIBundle(uiConfig);
+        });
+    </script>
+</body>
+</html>

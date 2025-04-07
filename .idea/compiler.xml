@@ -15,6 +15,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
         </processorPath>
         <module name="task11" />
+        <module name="task11 (1)" />
       </profile>
     </annotationProcessing>
   </component>
