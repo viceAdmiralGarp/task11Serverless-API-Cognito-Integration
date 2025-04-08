@@ -1,4 +1,4 @@
-package com.task11;
+package com.task12;
 
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProviderClientBuilder;
@@ -15,19 +15,19 @@ import com.syndicate.deployment.annotations.lambda.LambdaHandler;
 import com.syndicate.deployment.annotations.resources.DependsOn;
 import com.syndicate.deployment.model.ResourceType;
 import com.syndicate.deployment.model.RetentionSetting;
-import com.task11.context.ApiClientContext;
-import com.task11.creators.ReservationCreator;
-import com.task11.creators.TableCreator;
-import com.task11.getters.GetReservations;
-import com.task11.getters.GetTableById;
-import com.task11.getters.GetTables;
-import com.task11.handler.RouteHandler;
-import com.task11.handler.LoginHandler;
-import com.task11.handler.RegisterHandler;
-import com.task11.service.AuthService;
-import com.task11.service.ReservationService;
-import com.task11.service.TableService;
-import com.task11.util.Response;
+import com.task12.context.ApiClientContext;
+import com.task12.creators.ReservationCreator;
+import com.task12.creators.TableCreator;
+import com.task12.getters.GetReservations;
+import com.task12.getters.GetTableById;
+import com.task12.getters.GetTables;
+import com.task12.handler.RouteHandler;
+import com.task12.handler.LoginHandler;
+import com.task12.handler.RegisterHandler;
+import com.task12.service.AuthService;
+import com.task12.service.ReservationService;
+import com.task12.service.TableService;
+import com.task12.util.Response;
 
 import java.util.HashMap;
 import java.util.Map;

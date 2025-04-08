@@ -1,4 +1,4 @@
-package com.task11.util;
+package com.task12.util;
 
 public class ValidationUtility {
     public static boolean isValidEmail(String email) {

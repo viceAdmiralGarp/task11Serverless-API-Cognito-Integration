@@ -1,9 +1,9 @@
-package com.task11.service;
+package com.task12.service;
 
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.Table;
-import com.task11.util.Response;
+import com.task12.util.Response;
 
 import java.util.ArrayList;
 import java.util.HashMap;

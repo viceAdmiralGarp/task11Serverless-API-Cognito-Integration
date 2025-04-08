@@ -1,4 +1,4 @@
-package com.task11.service;
+package com.task12.service;
 
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.AdminCreateUserRequest;
@@ -9,8 +9,8 @@ import com.amazonaws.services.cognitoidp.model.AttributeType;
 import com.amazonaws.services.cognitoidp.model.AuthFlowType;
 import com.amazonaws.services.cognitoidp.model.UsernameExistsException;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.task11.util.ValidationUtility;
-import com.task11.util.Response;
+import com.task12.util.ValidationUtility;
+import com.task12.util.Response;
 
 
 import java.util.HashMap;
