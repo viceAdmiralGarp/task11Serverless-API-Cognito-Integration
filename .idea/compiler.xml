@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="task11" />
       </profile>
-      <profile name="Annotation profile for task11" enabled="true">
+      <profile name="Annotation profile for task12" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -19,5 +19,8 @@
         <module name="task11 (1)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="task11" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

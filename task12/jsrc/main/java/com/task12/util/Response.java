@@ -1,4 +1,4 @@
-package com.task11.util;
+package com.task12.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,16 +11,15 @@ public class Response {
         Map<String, Object> response = new HashMap<>();
         response.put("statusCode", statusCode);
         response.put("body", body instanceof String ? body : toJson(body));
-
-         Map<String, String> headers = new HashMap<>();
+          Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
+
         headers.put("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token");
         headers.put("Access-Control-Allow-Origin", "*");
         headers.put("Access-Control-Allow-Methods", "*");
         headers.put("Accept-Version", "*");
 
         response.put("headers", headers);
-
         return response;
     }
 

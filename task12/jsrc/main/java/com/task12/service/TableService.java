@@ -1,11 +1,11 @@
-package com.task11.service;
+package com.task12.service;
 
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.document.spec.GetItemSpec;
 import com.amazonaws.services.lambda.runtime.Context;
-import com.task11.util.Response;
+import com.task12.util.Response;
 
 import java.util.ArrayList;
 import java.util.Comparator;

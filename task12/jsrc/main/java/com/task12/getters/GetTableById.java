@@ -1,8 +1,8 @@
-package com.task11.getters;
+package com.task12.getters;
 
-import com.task11.context.ApiClientContext;
-import com.task11.handler.RouteHandler;
-import com.task11.service.TableService;
+import com.task12.context.ApiClientContext;
+import com.task12.handler.RouteHandler;
+import com.task12.service.TableService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;

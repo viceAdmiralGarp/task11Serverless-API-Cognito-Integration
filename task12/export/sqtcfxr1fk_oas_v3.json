@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Restaurant Booking API",
-    "version": "2025-04-01T18:30:24Z"
+    "title": "task12_api",
+    "version": "2025-04-08T08:49:16Z"
   },
   "servers": [
     {
-      "url": "https://kh6q0kv8r9.execute-api.eu-west-1.amazonaws.com/{basePath}",
+      "url": "https://sqtcfxr1fk.execute-api.eu-west-1.amazonaws.com/{basePath}",
       "variables": {
         "basePath": {
           "default": "api"
@@ -17,11 +17,11 @@
   "paths": {
     "/reservations": {
       "get": {
-        "summary": "Get all bookings",
-        "description": "Returns complete list of restaurant reservations including table assignments and guest details.",
+        "summary": "Get all reservations",
+        "description": "This endpoint returns all existing reservations in the system, including details such as table number, client name, contact information, reservation date, and time slot.",
         "responses": {
           "200": {
-            "description": "Successful retrieval of booking records",
+            "description": "A list of reservations got successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -49,8 +49,8 @@
         }
       },
       "post": {
-        "summary": "Add new booking",
-        "description": "Creates a new restaurant reservation with specified table, guest information and time slot.",
+        "summary": "Create a new reservation",
+        "description": "This endpoint allows a user to create a new reservation by providing details such as table ID, client name, contact information, date, and time slot.",
         "requestBody": {
           "required": true,
           "content": {
@@ -60,34 +60,39 @@
                 "properties": {
                   "tableId": {
                     "type": "string",
-                    "description": "Unique identifier for the reserved table"
+                    "description": "Identifier of the table being reserved"
                   },
                   "clientName": {
                     "type": "string",
-                    "description": "Full name of the booking guest"
+                    "description": "Full name of the person placing the reservation"
                   },
                   "contactInfo": {
                     "type": "string",
-                    "description": "Guest contact details (phone/email)"
+                    "description": "Client’s contact details, such as phone number or email address"
                   },
                   "date": {
                     "type": "string",
                     "format": "date",
-                    "description": "Reservation date (YYYY-MM-DD)"
+                    "description": "Date on which the reservation is scheduled"
                   },
                   "timeSlot": {
                     "type": "string",
-                    "description": "Reserved time period (HH:MM-HH:MM)"
+                    "description": "Reserved time window (e.g., '18:00-20:00')"
                   }
                 },
-                "required": ["tableId", "clientName", "date", "timeSlot"]
+                "required": [
+                  "tableId",
+                  "clientName",
+                  "date",
+                  "timeSlot"
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Booking successfully created",
+            "description": "Reservation created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -117,11 +122,11 @@
     },
     "/tables": {
       "get": {
-        "summary": "List dining tables",
-        "description": "Retrieves complete inventory of available dining tables with capacities.",
+        "summary": "Retrieve all tables",
+        "description": "This endpoint returns a list of all tables registered in the system, along with their IDs and additional related information.",
         "responses": {
           "200": {
-            "description": "Table list retrieved",
+            "description": "A list of tables retrieved successfully",
             "headers": {
               "Access-Control-Allow-Origin": {
                 "schema": {
@@ -159,8 +164,8 @@
         }
       },
       "post": {
-        "summary": "Register new table",
-        "description": "Adds a new dining table to the restaurant's inventory system.",
+        "summary": "Create a new table",
+        "description": "This endpoint allows the creation of a new table by specifying its details, such as table ID and capacity.",
         "requestBody": {
           "required": true,
           "content": {
@@ -170,21 +175,24 @@
                 "properties": {
                   "tableId": {
                     "type": "string",
-                    "description": "Unique table identifier"
+                    "description": "A unique ID assigned to the table"
                   },
                   "capacity": {
                     "type": "integer",
-                    "description": "Maximum seating capacity"
+                    "description": "Number of guests the table is designed to seat"
                   }
                 },
-                "required": ["tableId", "capacity"]
+                "required": [
+                  "tableId",
+                  "capacity"
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Table successfully added",
+            "description": "Table created successfully",
             "headers": {
               "Access-Control-Allow-Origin": {
                 "schema": {
@@ -222,11 +230,11 @@
         }
       },
       "options": {
-        "summary": "CORS configuration",
-        "description": "Handles preflight requests for table management endpoints.",
+        "summary": "CORS preflight for /tables",
+        "description": "Handles CORS preflight requests for the /tables endpoint.",
         "responses": {
           "200": {
-            "description": "CORS headers returned",
+            "description": "CORS preflight response",
             "headers": {
               "Access-Control-Allow-Origin": {
                 "schema": {
@@ -274,8 +282,8 @@
     },
     "/signin": {
       "post": {
-        "summary": "User authentication",
-        "description": "Validates user credentials and returns authentication token.",
+        "summary": "Sign in a user",
+        "description": "This endpoint authenticates a user by accepting their username and password, returning an authentication token upon success.",
         "requestBody": {
           "required": true,
           "content": {
@@ -285,21 +293,24 @@
                 "properties": {
                   "username": {
                     "type": "string",
-                    "description": "Registered username"
+                    "description": "The username of the user"
                   },
                   "password": {
                     "type": "string",
-                    "description": "Account password"
+                    "description": "The password of the user"
                   }
                 },
-                "required": ["username", "password"]
+                "required": [
+                  "username",
+                  "password"
+                ]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Authentication successful",
+            "description": "User signed in successfully",
             "headers": {
               "Access-Control-Allow-Origin": {
                 "schema": {
@@ -332,121 +343,9 @@
         }
       },
       "options": {
-        "summary": "CORS preflight",
-        "description": "Handles authentication endpoint preflight requests.",
         "responses": {
           "200": {
-            "description": "CORS configuration",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Methods": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "Access-Control-Allow-Headers": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Empty"
-                }
-              }
-            }
-          }
-        },
-        "x-amazon-apigateway-integration": {
-          "responses": {
-            "default": {
-              "statusCode": "200",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Methods": "'*'",
-                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            }
-          },
-          "requestTemplates": {
-            "application/json": "{\"statusCode\": 200}"
-          },
-          "passthroughBehavior": "when_no_match",
-          "type": "mock"
-        }
-      }
-    },
-    "/signup": {
-      "post": {
-        "summary": "Create account",
-        "description": "Registers new user account in the booking system.",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "username": {
-                    "type": "string",
-                    "description": "New account username"
-                  },
-                  "password": {
-                    "type": "string",
-                    "description": "New account password"
-                  }
-                },
-                "required": ["username", "password"]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Account created successfully",
-            "headers": {
-              "Access-Control-Allow-Origin": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Empty"
-                }
-              }
-            }
-          }
-        },
-        "x-amazon-apigateway-integration": {
-          "httpMethod": "POST",
-          "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:423623856894:function:api_handler/invocations",
-          "responses": {
-            "default": {
-              "statusCode": "200",
-              "responseParameters": {
-                "method.response.header.Access-Control-Allow-Origin": "'*'"
-              }
-            }
-          },
-          "passthroughBehavior": "when_no_match",
-          "type": "aws_proxy"
-        }
-      },
-      "options": {
-        "summary": "CORS preflight",
-        "description": "Handles registration endpoint preflight requests.",
-        "responses": {
-          "200": {
-            "description": "CORS configuration",
+            "description": "CORS preflight response",
             "headers": {
               "Access-Control-Allow-Origin": {
                 "schema": {
@@ -494,8 +393,8 @@
     },
     "/tables/{tableId}": {
       "get": {
-        "summary": "Get table details",
-        "description": "Retrieves specific information about a particular dining table.",
+        "summary": "Retrieve a specific table",
+        "description": "This endpoint retrieves details of a specific table identified by its tableId.",
         "parameters": [
           {
             "name": "tableId",
@@ -504,12 +403,12 @@
             "schema": {
               "type": "string"
             },
-            "description": "Unique table identifier"
+            "description": "The unique identifier of the table"
           }
         ],
         "responses": {
           "200": {
-            "description": "Table information retrieved",
+            "description": "Table details retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -536,6 +435,119 @@
           "type": "aws_proxy"
         }
       }
+    },
+    "/signup": {
+      "post": {
+        "summary": "Register a new user",
+        "description": "This endpoint registers a new user by accepting a username and password, creating a new account in the system.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "description": "The desired username for the new user"
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "The password for the new user"
+                  }
+                },
+                "required": [
+                  "username",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User registered successfully",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "httpMethod": "POST",
+          "uri": "arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:423623856894:function:api_handler/invocations",
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "aws_proxy"
+        }
+      },
+      "options": {
+        "summary": "CORS preflight for /signup",
+        "description": "Handles CORS preflight requests for the /signup endpoint.",
+        "responses": {
+          "200": {
+            "description": "CORS preflight response",
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Methods": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "Access-Control-Allow-Headers": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Empty"
+                }
+              }
+            }
+          }
+        },
+        "x-amazon-apigateway-integration": {
+          "responses": {
+            "default": {
+              "statusCode": "200",
+              "responseParameters": {
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          },
+          "requestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          },
+          "passthroughBehavior": "when_no_match",
+          "type": "mock"
+        }
+      }
     }
   },
   "components": {
@@ -552,7 +564,9 @@
         "in": "header",
         "x-amazon-apigateway-authtype": "cognito_user_pools",
         "x-amazon-apigateway-authorizer": {
-          "x-syndicate-cognito-userpool-names": ["${booking_userpool}"],
+          "x-syndicate-cognito-userpool-names": [
+            "${booking_userpool}"
+          ],
           "type": "cognito_user_pools"
         }
       }

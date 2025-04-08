@@ -1,7 +1,7 @@
-package com.task11.handler;
+package com.task12.handler;
 
-import com.task11.context.ApiClientContext;
-import com.task11.service.AuthService;
+import com.task12.context.ApiClientContext;
+import com.task12.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Map;
